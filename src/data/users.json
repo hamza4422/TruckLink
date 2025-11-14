@@ -1,0 +1,32 @@
+[
+  {
+    "email": "hamza@gmail.com",
+    "fname": "Hamza Abdallah",
+    "password": "hamza123",
+    "locations": [
+      "north",
+      "south"
+    ],
+    "description": "in bayroot"
+  },
+  {
+    "email": "ali@gmail.com",
+    "fname": "ali harbe",
+    "password": "hamza123",
+    "locations": [
+      "mountLebanon",
+      "south"
+    ],
+    "description": "i work with all type of products"
+  },
+  {
+    "email": "mhmd@gmail.com",
+    "fname": "mhmd mhmd",
+    "password": "hamza123",
+    "locations": [
+      "beirut",
+      "nabatieh"
+    ],
+    "description": "i work just with company"
+  }
+]
