@@ -1,0 +1,44 @@
+.trucks-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.title {
+  color: #b05801;
+  margin-bottom: 20px;
+}
+
+.filter-container {
+  margin-bottom: 25px;
+}
+
+.filter-select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: #b05801;
+  font-size: 16px;
+  outline: none;
+  backdrop-filter: blur(20px);
+}
+
+.trucks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* تابلت */
+@media (max-width: 900px) {
+  .trucks-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* موبايل */
+@media (max-width: 600px) {
+  .trucks-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

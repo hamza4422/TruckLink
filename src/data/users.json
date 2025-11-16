@@ -1,15 +1,5 @@
 [
   {
-    "email": "hamza@gmail.com",
-    "fname": "Hamza Abdallah",
-    "password": "hamza123",
-    "locations": [
-      "north",
-      "south"
-    ],
-    "description": "in bayroot"
-  },
-  {
     "email": "ali@gmail.com",
     "fname": "ali harbe",
     "password": "hamza123",
@@ -28,5 +18,15 @@
       "nabatieh"
     ],
     "description": "i work just with company"
+  },
+  {
+    "fname": "hamza abdallah",
+    "phoneNumber": "78963561",
+    "email": "hamza@gmail.com",
+    "password": "hamza123",
+    "locations": [
+      "beirut"
+    ],
+    "description": "in beuroot"
   }
 ]

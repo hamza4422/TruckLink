@@ -9,7 +9,7 @@
     color:#b05801;
 }
 .wrapper{
-    width: 100%;
+    width: 400px;
     max-width: 90%;
     color: #b05801;
     background: transparent;
@@ -86,11 +86,9 @@
     text-decoration: underline;
     color:#a0e8f0;
 }
-
-/* --- Media Queries للأجهزة الصغيرة --- */
 @media screen and (max-width: 480px) {
     .wrapper {
-        padding: 30px 20px; /* تقليل الحشو */
+        padding: 30px 20px; 
         margin: 50px auto;
         border-radius: 15px;
         backdrop-filter: blur(30px);

@@ -1,0 +1,74 @@
+.truck-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(40px);
+  border-radius: 15px;
+  padding: 20px;
+  color: #b05801;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.truck-card:hover {
+  transform: translateY(-5px);
+}
+
+/* صورة الشاحنة */
+.truck-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;        /* يقطع الصورة بشكل جميل */
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.truck-name {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.truck-phone {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.truck-locations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.location-tag {
+  background: rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #fff;
+}
+
+.truck-desc {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.whatsapp-btn {
+  width: 100%;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.whatsapp-btn:hover {
+  background: #1aba57;
+}

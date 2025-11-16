@@ -6,6 +6,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Trucks from './pages/Trucks';
 import Registration from './pages/Registration';
+import DriverDashboard from './pages/DriverDashboard';
 function App() {
   return (
     <div className='App'>
@@ -17,6 +18,7 @@ function App() {
           <Route path='/trucks' element={<Trucks/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/registration' element={<Registration/>}/>
+          <Route path="/dashboard" element={<DriverDashboard />} />
         </Routes>
       </BrowserRouter>
      
