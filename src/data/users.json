@@ -1,6 +1,7 @@
 [
   {
     "email": "ali@gmail.com",
+    "phoneNumber": "78964561",
     "fname": "ali harbe",
     "password": "hamza123",
     "locations": [
@@ -11,6 +12,7 @@
   },
   {
     "email": "mhmd@gmail.com",
+    "phoneNumber": "78956651",
     "fname": "mhmd mhmd",
     "password": "hamza123",
     "locations": [
