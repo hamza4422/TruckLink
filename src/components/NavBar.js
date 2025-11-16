@@ -23,7 +23,7 @@ const NavBar = () => {
             <div className='link'>
               <Link onClick={hideList} to="/" >Home</Link>
               <Link onClick={hideList} to="/about" >About</Link>
-              <Link onClick={hideList} to="/turcks">Trucks</Link>
+              <Link onClick={hideList} to="/trucks">Trucks</Link>
               <Link onClick={hideList} to="/login">Login</Link>
             </div>
         </nav>

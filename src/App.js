@@ -14,7 +14,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/about' element={<About/>}/>
-          <Route path='/turcks' element={<Trucks/>}/>
+          <Route path='/trucks' element={<Trucks/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/registration' element={<Registration/>}/>
         </Routes>
@@ -25,4 +25,3 @@ function App() {
 }
 
 export default App;
-//test change
