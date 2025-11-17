@@ -1,18 +1,20 @@
 import React from "react";
 import "../styles/TruckCard.css";
 import { FaWhatsapp } from "react-icons/fa";
-import defaultImage from "../assets/truck_default.jpg";
+
+const API = "http://localhost:5000";
 
 const TruckCard = ({ driver }) => {
-  const { fname, phoneNumber, locations, description, imageUrl } = driver;
+  const { fname, phoneNumber, locations, description } = driver;
 
   const whatsappLink = `https://wa.me/961${phoneNumber}?text=مرحبا،%20اريد%20الاستفسار%20عبر%20TruckLink`;
 
   return (
     <div className="truck-card">
+
       <img
         className="truck-image"
-        src={imageUrl && imageUrl !== "" ? imageUrl : defaultImage}
+        src={`${API}/${driver.imageUrl}`}
         alt="truck"
       />
 
@@ -35,6 +37,7 @@ const TruckCard = ({ driver }) => {
           <FaWhatsapp /> تواصل عبر واتساب
         </button>
       </a>
+
     </div>
   );
 };

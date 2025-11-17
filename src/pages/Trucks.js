@@ -1,15 +1,32 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Trucks.css";
-import TruckCard from "../components/Truckcard";
-import driversData from "../data/users.json"; // مؤقتًا
+import TruckCard from "../components/TruckCard";
+
+const API = "http://localhost:5000";
 
 const Trucks = () => {
   const [drivers, setDrivers] = useState([]);
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
-    setDrivers(driversData); // تحميل البيانات
-  }, []);
+  fetch(`${API}/drivers`)
+    .then((res) => res.json())
+    .then((data) => {
+      const formatted = data.map((d) => ({
+        ...d,
+        locations:
+          typeof d.locations === "string"
+            ? d.locations.split(",")
+            : Array.isArray(d.locations)
+            ? d.locations
+            : [] 
+      }));
+
+      setDrivers(formatted);
+    })
+    .catch((err) => console.error("Error loading drivers:", err));
+}, []);
+
 
   const filteredDrivers =
     filter === "all"
@@ -42,7 +59,6 @@ const Trucks = () => {
           <TruckCard key={index} driver={driver} />
         ))}
       </div>
-
     </div>
   );
 };
