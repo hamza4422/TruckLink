@@ -1,17 +1,20 @@
 {
   "files": {
-    "main.css": "/TruckLink/static/css/main.4a9cf1e4.css",
-    "main.js": "/TruckLink/static/js/main.ea6e5368.js",
+    "main.css": "/TruckLink/static/css/main.f2efe17c.css",
+    "main.js": "/TruckLink/static/js/main.a1304324.js",
     "static/js/787.28cb0dcd.chunk.js": "/TruckLink/static/js/787.28cb0dcd.chunk.js",
     "static/media/background.png": "/TruckLink/static/media/background.a23a6592dc4b353ecaef.png",
     "static/media/trucklink_inverted.png": "/TruckLink/static/media/trucklink_inverted.712fc41dd3dbe83f5bfc.png",
+    "static/media/HomePage.png": "/TruckLink/static/media/HomePage.8a86902f66d0a2f8d5ea.png",
+    "static/media/truck_default.jpg": "/TruckLink/static/media/truck_default.12dbdb177e6bd1dd99f6.jpg",
+    "static/media/weather-bg.jpg": "/TruckLink/static/media/weather-bg.caca41d8f0163b698e65.jpg",
     "index.html": "/TruckLink/index.html",
-    "main.4a9cf1e4.css.map": "/TruckLink/static/css/main.4a9cf1e4.css.map",
-    "main.ea6e5368.js.map": "/TruckLink/static/js/main.ea6e5368.js.map",
+    "main.f2efe17c.css.map": "/TruckLink/static/css/main.f2efe17c.css.map",
+    "main.a1304324.js.map": "/TruckLink/static/js/main.a1304324.js.map",
     "787.28cb0dcd.chunk.js.map": "/TruckLink/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4a9cf1e4.css",
-    "static/js/main.ea6e5368.js"
+    "static/css/main.f2efe17c.css",
+    "static/js/main.a1304324.js"
   ]
 }
