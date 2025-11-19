@@ -8,7 +8,7 @@ import Trucks from "./pages/Trucks";
 import Registration from "./pages/Registration";
 import DriverDashboard from "./pages/DriverDashboard";
 import Footer from "./components/Footer";
-
+import Weather from "./pages/Weather";
 function App() {
   return (
     <div className="App">
@@ -21,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/dashboard" element={<DriverDashboard />} />
+          <Route path="/weather" element={<Weather />} />
         </Routes>
         <Footer />
       </BrowserRouter>

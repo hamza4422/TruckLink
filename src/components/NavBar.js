@@ -58,7 +58,9 @@ const NavBar = () => {
           <Link onClick={hideList} to="/trucks">
             {t.trucks}
           </Link>
-
+          <Link onClick={hideList} to="/weather">
+            {t.weather}
+          </Link>
           {isLogged ? (
             <>
               <Link onClick={hideList} to="/dashboard">
