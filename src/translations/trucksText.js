@@ -1,7 +1,16 @@
 const trucksText = {
   en: {
-    title: "Search for a Truck",
-    filterAll: "All regions",
+    title: "Search for Trucks",
+    regions: {
+      all: "All Regions",
+      beirut: "Beirut",
+      mountLebanon: "Mount Lebanon",
+      north: "North",
+      south: "South",
+      bekaa: "Bekaa",
+      nabatieh: "Nabatieh",
+    },
+
     regionsLabels: {
       beirut: "Beirut",
       mountLebanon: "Mount Lebanon",
@@ -10,11 +19,24 @@ const trucksText = {
       bekaa: "Bekaa",
       nabatieh: "Nabatieh",
     },
+
+    placeholders: {
+      selectRegion: "Select Region",
+    }
   },
 
   ar: {
     title: "ابحث عن شاحنة",
-    filterAll: "كل المناطق",
+    regions: {
+      all: "كل المناطق",
+      beirut: "بيروت",
+      mountLebanon: "جبل لبنان",
+      north: "الشمال",
+      south: "الجنوب",
+      bekaa: "البقاع",
+      nabatieh: "النبطية",
+    },
+
     regionsLabels: {
       beirut: "بيروت",
       mountLebanon: "جبل لبنان",
@@ -23,7 +45,11 @@ const trucksText = {
       bekaa: "البقاع",
       nabatieh: "النبطية",
     },
-  },
+
+    placeholders: {
+      selectRegion: "اختر المنطقة",
+    }
+  }
 };
 
 export default trucksText;

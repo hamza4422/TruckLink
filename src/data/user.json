@@ -1,0 +1,514 @@
+{
+  "drivers": [
+    {
+      "id": 1,
+      "fname": "Hamza Abdallah",
+      "email": "hamza@gmail.com.com",
+      "phoneNumber": "70011001",
+      "password": "12345678",
+      "description": "Reliable driver available for cargo transport.",
+      "locations": ["beirut", "mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 2,
+      "fname": "Hassan Ch",
+      "email": "hassan2@example.com",
+      "phoneNumber": "70011002",
+      "password": "123456",
+      "description": "Fast delivery service with long-distance experience.",
+      "locations": ["south", "nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 3,
+      "fname": "Mahmoud Ali",
+      "email": "mah3@example.com",
+      "phoneNumber": "70011003",
+      "password": "123456",
+      "description": "Experienced driver for heavy loads.",
+      "locations": ["north", "bekaa"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 4,
+      "fname": "Abbas Krayem",
+      "email": "abbas4@example.com",
+      "phoneNumber": "70011004",
+      "password": "123456",
+      "description": "Available 24/7 for fast moving requests.",
+      "locations": ["beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 5,
+      "fname": "Mohamad S.",
+      "email": "moh5@example.com",
+      "phoneNumber": "70011005",
+      "password": "123456",
+      "description": "Transporting goods safely and quickly.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 6,
+      "fname": "Fadi Hamdan",
+      "email": "fadi6@example.com",
+      "phoneNumber": "70011006",
+      "password": "123456",
+      "description": "Specialist in long-distance routes.",
+      "locations": ["south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 7,
+      "fname": "Rami Farhat",
+      "email": "rami7@example.com",
+      "phoneNumber": "70011007",
+      "password": "123456",
+      "description": "Transporting fragile goods with care.",
+      "locations": ["north"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 8,
+      "fname": "Omar Eid",
+      "email": "omar8@example.com",
+      "phoneNumber": "70011008",
+      "password": "123456",
+      "description": "Quick and efficient cargo delivery.",
+      "locations": ["beirut", "nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 9,
+      "fname": "Walid K.",
+      "email": "walid9@example.com",
+      "phoneNumber": "70011009",
+      "password": "123456",
+      "description": "Expert in refrigerated transport.",
+      "locations": ["bekaa"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 10,
+      "fname": "Bilal H.",
+      "email": "bilal10@example.com",
+      "phoneNumber": "70011010",
+      "password": "123456",
+      "description": "Trusted logistics and delivery operations.",
+      "locations": ["mountLebanon", "south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 11,
+      "fname": "Samer W.",
+      "email": "samer11@example.com",
+      "phoneNumber": "70011011",
+      "password": "123456",
+      "description": "Heavy-duty cargo expert.",
+      "locations": ["north", "beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 12,
+      "fname": "Karim Daher",
+      "email": "karim12@example.com",
+      "phoneNumber": "70011012",
+      "password": "123456",
+      "description": "Fast and secure deliveries.",
+      "locations": ["south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 13,
+      "fname": "Nadim Sleiman",
+      "email": "nadim13@example.com",
+      "phoneNumber": "70011013",
+      "password": "123456",
+      "description": "Transport for industrial materials.",
+      "locations": ["bekaa", "mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 14,
+      "fname": "Tarek H.",
+      "email": "tarek14@example.com",
+      "phoneNumber": "70011014",
+      "password": "123456",
+      "description": "Available day and night for fast delivery.",
+      "locations": ["nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 15,
+      "fname": "Jawad R.",
+      "email": "jawad15@example.com",
+      "phoneNumber": "70011015",
+      "password": "123456",
+      "description": "Transporting construction materials.",
+      "locations": ["beirut", "south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 16,
+      "fname": "Ahmad Y.",
+      "email": "ahmad16@example.com",
+      "phoneNumber": "70011016",
+      "password": "123456",
+      "description": "Professional driver for light trucks.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 17,
+      "fname": "Jad K.",
+      "email": "jad17@example.com",
+      "phoneNumber": "70011017",
+      "password": "123456",
+      "description": "Cargo delivery anywhere in Lebanon.",
+      "locations": ["north"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 18,
+      "fname": "Youssef M.",
+      "email": "y18@example.com",
+      "phoneNumber": "70011018",
+      "password": "123456",
+      "description": "Expert in medical equipment transport.",
+      "locations": ["beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 19,
+      "fname": "Hussein A.",
+      "email": "hussein19@example.com",
+      "phoneNumber": "70011019",
+      "password": "123456",
+      "description": "Transporting goods quickly and reliably.",
+      "locations": ["south", "bekaa"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 20,
+      "fname": "Khaled F.",
+      "email": "khaled20@example.com",
+      "phoneNumber": "70011020",
+      "password": "123456",
+      "description": "Trusted by businesses for regular transport.",
+      "locations": ["nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 21,
+      "fname": "Adel S.",
+      "email": "adel21@example.com",
+      "phoneNumber": "70011021",
+      "password": "123456",
+      "description": "Long-distance and inter-city transport.",
+      "locations": ["north", "south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 22,
+      "fname": "Samir A.",
+      "email": "samir22@example.com",
+      "phoneNumber": "70011022",
+      "password": "123456",
+      "description": "Reliable work with over 10 years experience.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 23,
+      "fname": "Ziad B.",
+      "email": "ziad23@example.com",
+      "phoneNumber": "70011023",
+      "password": "123456",
+      "description": "Available for urgent requests.",
+      "locations": ["beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 24,
+      "fname": "Farid L.",
+      "email": "farid24@example.com",
+      "phoneNumber": "70011024",
+      "password": "123456",
+      "description": "Pro in transporting special materials.",
+      "locations": ["bekaa"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 25,
+      "fname": "Rafic H.",
+      "email": "rafic25@example.com",
+      "phoneNumber": "70011025",
+      "password": "123456",
+      "description": "Weekly trips across all Lebanon.",
+      "locations": ["south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 26,
+      "fname": "Majed K.",
+      "email": "maj26@example.com",
+      "phoneNumber": "70011026",
+      "password": "123456",
+      "description": "Transporting home furniture safely.",
+      "locations": ["north"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 27,
+      "fname": "Rayan B.",
+      "email": "rayan27@example.com",
+      "phoneNumber": "70011027",
+      "password": "123456",
+      "description": "Professional truck driver with fast service.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 28,
+      "fname": "Hazem R.",
+      "email": "hazem28@example.com",
+      "phoneNumber": "70011028",
+      "password": "123456",
+      "description": "Safe and fast logistics everywhere.",
+      "locations": ["nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 29,
+      "fname": "Abed J.",
+      "email": "abed29@example.com",
+      "phoneNumber": "70011029",
+      "password": "123456",
+      "description": "Transport specialist for heavy loads.",
+      "locations": ["beirut", "north"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 30,
+      "fname": "Sleiman H.",
+      "email": "sl30@example.com",
+      "phoneNumber": "70011030",
+      "password": "123456",
+      "description": "Trusted by companies and shops.",
+      "locations": ["bekaa"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 31,
+      "fname": "Mikael Touma",
+      "email": "mika31@example.com",
+      "phoneNumber": "70011031",
+      "password": "123456",
+      "description": "Transporting fragile items with extra safety.",
+      "locations": ["south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 32,
+      "fname": "Jihad R.",
+      "email": "jihad32@example.com",
+      "phoneNumber": "70011032",
+      "password": "123456",
+      "description": "Always on time, always reliable.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 33,
+      "fname": "Hussein B.",
+      "email": "hus33@example.com",
+      "phoneNumber": "70011033",
+      "password": "123456",
+      "description": "Serving all regions of Lebanon.",
+      "locations": ["beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 34,
+      "fname": "Marwan K.",
+      "email": "mar34@example.com",
+      "phoneNumber": "70011034",
+      "password": "123456",
+      "description": "Available for short and long hauls.",
+      "locations": ["north"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 35,
+      "fname": "Fouad A.",
+      "email": "fou35@example.com",
+      "phoneNumber": "70011035",
+      "password": "123456",
+      "description": "Professional logistics solutions.",
+      "locations": ["nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 36,
+      "fname": "Rashid R.",
+      "email": "rash36@example.com",
+      "phoneNumber": "70011036",
+      "password": "123456",
+      "description": "Wide experience in cargo services.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 37,
+      "fname": "Bahaa K.",
+      "email": "bah37@example.com",
+      "phoneNumber": "70011037",
+      "password": "123456",
+      "description": "Full Lebanon coverage.",
+      "locations": ["south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 38,
+      "fname": "Jamil S.",
+      "email": "jam38@example.com",
+      "phoneNumber": "70011038",
+      "password": "123456",
+      "description": "Heavy truck specialist.",
+      "locations": ["bekaa"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 39,
+      "fname": "Hassan R.",
+      "email": "hr39@example.com",
+      "phoneNumber": "70011039",
+      "password": "123456",
+      "description": "Specialist in express transport.",
+      "locations": ["north", "beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 40,
+      "fname": "Murtada J.",
+      "email": "mur40@example.com",
+      "phoneNumber": "70011040",
+      "password": "123456",
+      "description": "Fast and safe delivery guaranteed.",
+      "locations": ["nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 41,
+      "fname": "Salah T.",
+      "email": "salah41@example.com",
+      "phoneNumber": "70011041",
+      "password": "123456",
+      "description": "Affordable transport solutions.",
+      "locations": ["beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 42,
+      "fname": "Hadi H.",
+      "email": "hadi42@example.com",
+      "phoneNumber": "70011042",
+      "password": "123456",
+      "description": "Providing transport within all regions.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 43,
+      "fname": "Amer B.",
+      "email": "amer43@example.com",
+      "phoneNumber": "70011043",
+      "password": "123456",
+      "description": "Excellent timing and reliability.",
+      "locations": ["bekaa", "south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 44,
+      "fname": "Issa D.",
+      "email": "issa44@example.com",
+      "phoneNumber": "70011044",
+      "password": "123456",
+      "description": "Available for long-distance trips.",
+      "locations": ["north"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 45,
+      "fname": "Rami A.",
+      "email": "rami45@example.com",
+      "phoneNumber": "70011045",
+      "password": "123456",
+      "description": "Specialized in equipment transport.",
+      "locations": ["south", "nabatieh"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+
+    {
+      "id": 46,
+      "fname": "Takieddine E.",
+      "email": "tak46@example.com",
+      "phoneNumber": "70011046",
+      "password": "123456",
+      "description": "Fast delivery and cargo safety.",
+      "locations": ["mountLebanon"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 47,
+      "fname": "Sharif O.",
+      "email": "sha47@example.com",
+      "phoneNumber": "70011047",
+      "password": "123456",
+      "description": "24/7 emergency transport available.",
+      "locations": ["beirut"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 48,
+      "fname": "Mousa J.",
+      "email": "mous48@example.com",
+      "phoneNumber": "70011048",
+      "password": "123456",
+      "description": "Heavy and light truck transport.",
+      "locations": ["north"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 49,
+      "fname": "Feras L.",
+      "email": "fer49@example.com",
+      "phoneNumber": "70011049",
+      "password": "123456",
+      "description": "Professional and trusted driver.",
+      "locations": ["bekaa"],
+      "imageUrl": "uploads/truck_default.jpg"
+    },
+    {
+      "id": 50,
+      "fname": "Ahmad N.",
+      "email": "ahmad50@example.com",
+      "phoneNumber": "70011050",
+      "password": "123456",
+      "description": "Experienced in long-range transport.",
+      "locations": ["nabatieh", "south"],
+      "imageUrl": "uploads/truck_default.jpg"
+    }
+  ]
+}

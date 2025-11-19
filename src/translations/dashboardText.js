@@ -1,31 +1,25 @@
 const dashboardText = {
   en: {
-    loading: "Loading data...",
-    changeImage: "Change image",
+    loading: "Loading profile...",
     name: "Name",
     email: "Email",
     phone: "Phone",
-    regions: "Regions",
+    locations: "Locations",
     description: "Description",
-    editButton: "Edit data",
-    saveButton: "Save changes",
-    saveSuccess: "Changes saved successfully",
-    saveError: "Error while updating data",
+    edit: "Edit Profile",
+    save: "Save Changes"
   },
 
   ar: {
     loading: "جاري تحميل البيانات...",
-    changeImage: "تغيير الصورة",
     name: "الاسم",
-    email: "الإيميل",
-    phone: "رقم الهاتف",
-    regions: "المناطق",
+    email: "البريد الإلكتروني",
+    phone: "الهاتف",
+    locations: "المناطق",
     description: "الوصف",
-    editButton: "تعديل البيانات",
-    saveButton: "حفظ التعديلات",
-    saveSuccess: "تم حفظ التعديلات بنجاح",
-    saveError: "حدث خطأ أثناء تحديث البيانات",
-  },
+    edit: "تعديل البيانات",
+    save: "حفظ التعديلات"
+  }
 };
 
 export default dashboardText;

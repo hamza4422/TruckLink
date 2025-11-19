@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../styles/Trucks.css";
 import TruckCard from "../components/TruckCard";
-import { LanguageContext } from "../components/LanguageContext";
+import users from "../data/user.json";
 import trucksText from "../translations/trucksText";
-
-const API = "http://localhost:5000";
+import { LanguageContext } from "../components/LanguageContext";
+console.log("Drivers loaded:", users);
 
 const Trucks = () => {
   const [drivers, setDrivers] = useState([]);
@@ -14,33 +14,27 @@ const Trucks = () => {
   const t = trucksText[lang];
 
   useEffect(() => {
-    fetch(`${API}/drivers`)
-      .then((res) => res.json())
-      .then((data) => {
-        const formatted = data.map((d) => ({
-          ...d,
-          locations:
-            typeof d.locations === "string"
-              ? d.locations.split(",")
-              : Array.isArray(d.locations)
-              ? d.locations
-              : [],
-        }));
+    const formatted = users.drivers.map((d) => ({
+      ...d,
+      locations: Array.isArray(d.locations)
+        ? d.locations
+        : typeof d.locations === "string"
+        ? d.locations.split(",")
+        : []
+    }));
 
-        setDrivers(formatted);
-      })
-      .catch((err) => console.error("Error loading drivers:", err));
+    setDrivers(formatted);
   }, []);
+
 
   const filteredDrivers =
     filter === "all"
       ? drivers
       : drivers.filter((d) => d.locations.includes(filter));
 
-  const labels = t.regionsLabels;
-
   return (
-    <div className="trucks-page">
+    <div className="trucks-page" dir={lang === "ar" ? "rtl" : "ltr"}>
+
       <h1 className="title">{t.title}</h1>
 
       <div className="filter-container">
@@ -49,19 +43,20 @@ const Trucks = () => {
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         >
-          <option value="all">{t.filterAll}</option>
-          <option value="beirut">{labels.beirut}</option>
-          <option value="mountLebanon">{labels.mountLebanon}</option>
-          <option value="north">{labels.north}</option>
-          <option value="south">{labels.south}</option>
-          <option value="bekaa">{labels.bekaa}</option>
-          <option value="nabatieh">{labels.nabatieh}</option>
+          <option value="all">{t.regions.all}</option>
+          <option value="beirut">{t.regions.beirut}</option>
+          <option value="mountLebanon">{t.regions.mountLebanon}</option>
+          <option value="north">{t.regions.north}</option>
+          <option value="south">{t.regions.south}</option>
+          <option value="bekaa">{t.regions.bekaa}</option>
+          <option value="nabatieh">{t.regions.nabatieh}</option>
         </select>
+
       </div>
 
       <div className="trucks-grid">
-        {filteredDrivers.map((driver, index) => (
-          <TruckCard key={index} driver={driver} />
+        {filteredDrivers.map((driver) => (
+          <TruckCard key={driver.id} driver={driver} />
         ))}
       </div>
     </div>

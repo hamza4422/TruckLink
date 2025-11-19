@@ -3,7 +3,7 @@ import "../styles/TruckCard.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { LanguageContext } from "../components/LanguageContext";
 import trucksText from "../translations/trucksText";
-
+import image from "../assets/truck_default.jpg"
 const API = "http://localhost:5000";
 
 const TruckCard = ({ driver }) => {
@@ -24,7 +24,7 @@ const TruckCard = ({ driver }) => {
     <div className="truck-card">
       <img
         className="truck-image"
-        src={`${API}/${driver.imageUrl}`}
+        src={image}
         alt="truck"
       />
 
