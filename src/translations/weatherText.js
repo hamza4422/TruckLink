@@ -1,39 +1,68 @@
 const weatherText = {
   en: {
-    title: "Weather Conditions",
-    selectCity: "Select a region",
-    temp: "Temperature",
+    title: "Lebanon Weather Overview",
+    subtitle: "Live weather for all main Lebanese regions. Check conditions before planning your transport.",
+    error: "Error loading weather data. Please try again later.",
+    loading: "Loading...",
+    mainBoxTitle: "Weather in Lebanon",
+    lastUpdate: "Last update",
     wind: "Wind",
     humidity: "Humidity",
     feels: "Feels like",
-    error: "Unable to load weather data",
-    cities: {
+
+    regions: {
+      lebanon: "Lebanon",
       beirut: "Beirut",
       mountLebanon: "Mount Lebanon",
-      north: "North Lebanon",
-      south: "South Lebanon",
+      north: "North",
+      south: "South",
       bekaa: "Bekaa",
-      nabatieh: "Nabatieh"
-    }
+      nabatiye: "Nabatieh",
+    },
+
+
+    apiCities: {
+      lebanon: "Beirut",
+      beirut: "Beirut",
+      mountLebanon: "Jounieh",
+      north: "Tripoli",
+      south: "Sidon",
+      bekaa: "Zahle",
+      nabatieh: "Nabatiye",
+    },
   },
 
   ar: {
-    title: "حالة الطقس",
-    selectCity: "اختر المنطقة",
-    temp: "الحرارة",
-    wind: "الرياح",
+    title: "نظرة عامة على طقس لبنان",
+    subtitle: "حالة الطقس الحية لأهم المناطق اللبنانية. تأكد من الطقس قبل التخطيط لرحلة النقل.",
+    error: "حدث خطأ أثناء تحميل بيانات الطقس. حاول مرة أخرى لاحقاً.",
+    loading: "جاري التحميل...",
+    mainBoxTitle: "طقس لبنان",
+    lastUpdate: "آخر تحديث",
+    wind: "سرعة الرياح",
     humidity: "الرطوبة",
-    feels: "الحرارة المحسوسة",
-    error: "تعذر تحميل بيانات الطقس",
-    cities: {
+    feels: "درجة الإحساس",
+
+    regions: {
+      lebanon: "لبنان",
       beirut: "بيروت",
       mountLebanon: "جبل لبنان",
       north: "الشمال",
       south: "الجنوب",
       bekaa: "البقاع",
-      nabatieh: "النبطية"
-    }
-  }
+      nabatiye: "النبطية",
+    },
+
+    apiCities: {
+      lebanon: "Beirut",
+      beirut: "Beirut",
+      mountLebanon: "Jounieh",
+      north: "Tripoli",
+      south: "Sidon",
+      bekaa: "Zahle",
+      nabatieh: "Nabatiye",
+    },
+  },
 };
 
 export default weatherText;

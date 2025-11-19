@@ -1,3 +1,4 @@
+// src/pages/Weather.js
 import React, { useState, useEffect, useContext } from "react";
 import "../styles/Weather.css";
 import { LanguageContext } from "../components/LanguageContext";
@@ -7,77 +8,206 @@ const API_KEY = process.env.REACT_APP_WEATHER_KEY;
 
 const Weather = () => {
   const { lang } = useContext(LanguageContext);
-  const t = weatherText[lang]; // النصوص الجاهزة
-  const [selectedCity, setSelectedCity] = useState("beirut");
-  const [weather, setWeather] = useState(null);
+  const t = weatherText[lang];
+
+  const regionKeys = [
+    "lebanon",
+    "beirut",
+    "mountLebanon",
+    "north",
+    "south",
+    "bekaa",
+    "nabatiye",
+  ];
+
+  const [dataMap, setDataMap] = useState({});
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  console.log("API KEY:", API_KEY);
-
-  const fetchWeather = async (cityName) => {
-    try {
-      const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName},LB&appid=${API_KEY}&units=metric&lang=${lang}`
-      );
-
-      const data = await res.json();
-      if (data.cod !== 200) {
-        setError(t.error);
-        setWeather(null);
-        return;
-      }
-
-      setWeather(data);
-      setError("");
-    } catch {
-      setError(t.error);
-    }
-  };
 
   useEffect(() => {
-    const cityName = t.cities[selectedCity];
-    fetchWeather(cityName);
-  }, [lang]);
+    if (!API_KEY) {
+      setError(t.error);
+      setLoading(false);
+      return;
+    }
 
-  const handleCityChange = (e) => {
-    const newCity = e.target.value;
-    setSelectedCity(newCity);
-    fetchWeather(t.cities[newCity]);
+    const controller = new AbortController();
+
+    const fetchAll = async () => {
+      setLoading(true);
+      setError("");
+      try {
+        const promises = regionKeys.map((code) => {
+          const cityName = t.apiCities[code];
+          return fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
+              cityName
+            )},LB&appid=${API_KEY}&units=metric&lang=${lang}`,
+            { signal: controller.signal }
+          ).then((res) =>
+            res.json().then((json) => ({
+              code,
+              json,
+            }))
+          );
+        });
+
+        const results = await Promise.all(promises);
+        const map = {};
+        let hasAnySuccess = false;
+
+        results.forEach(({ code, json }) => {
+          if (json.cod === 200) {
+            map[code] = json;
+            hasAnySuccess = true;
+          }
+        });
+
+        if (!hasAnySuccess) {
+          setError(t.error);
+          setDataMap({});
+        } else {
+          setDataMap(map);
+        }
+      } catch (err) {
+        if (err.name !== "AbortError") {
+          setError(t.error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAll();
+
+    return () => controller.abort();
+  }, [lang, t]);
+
+  const mainData = dataMap["lebanon"] || dataMap["beirut"];
+
+  const otherRegions = regionKeys.filter((k) => k !== "lebanon");
+
+  const formatTime = (dt) => {
+    if (!dt) return "";
+    const date = new Date(dt * 1000);
+    return date.toLocaleTimeString(lang === "ar" ? "ar-LB" : "en-LB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
   };
 
   return (
-    <div className="weather-container">
+    <div
+      className="weather-page"
+      dir={lang === "ar" ? "rtl" : "ltr"}
+    >
+      <div className="weather-overlay" />
 
-      <h1 className="weather-title">{t.title}</h1>
+      <div className="weather-content">
+        <header className="weather-header">
+          <h1 className="weather-title">{t.title}</h1>
+          <p className="weather-sub">{t.subtitle}</p>
+        </header>
 
-      <select className="weather-select" value={selectedCity} onChange={handleCityChange}>
-        {Object.keys(t.cities).map((key) => (
-          <option value={key} key={key}>
-            {t.cities[key]}
-          </option>
-        ))}
-      </select>
+        {loading && (
+          <p className="weather-loading">{t.loading}</p>
+        )}
 
-      {error && <p className="weather-error">{error}</p>}
+        {error && !loading && (
+          <p className="weather-error">{error}</p>
+        )}
 
-      {weather && (
-        <div className="weather-card">
-          <img
-            className="weather-icon"
-            src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-            alt="icon"
-          />
+        {!loading && !error && mainData && (
+          <>
+            <section className="weather-main-card">
+              <div className="main-left">
+                <h2 className="main-title">{t.mainBoxTitle}</h2>
+                <p className="main-region">
+                  {t.regions["lebanon"]}
+                </p>
+                <div className="main-temp-row">
+                  <span className="main-temp">
+                    {Math.round(mainData.main.temp)}°C
+                  </span>
+                  <span className="main-desc">
+                    {mainData.weather[0].description}
+                  </span>
+                </div>
 
-          <h2 className="temp">{weather.main.temp}°C</h2>
-          <p className="desc">{weather.weather[0].description}</p>
+                <div className="main-details">
+                  <span>
+                    {t.feels}:{" "}
+                    {Math.round(mainData.main.feels_like)}°C
+                  </span>
+                  <span>
+                    {t.humidity}: {mainData.main.humidity}%
+                  </span>
+                  <span>
+                    {t.wind}: {mainData.wind.speed} km/h
+                  </span>
+                </div>
 
-          <div className="details">
-            <p>{t.wind}: {weather.wind.speed} km/h</p>
-            <p>{t.humidity}: {weather.main.humidity}%</p>
-            <p>{t.feels}: {weather.main.feels_like}°C</p>
-          </div>
-        </div>
-      )}
+                <p className="main-update">
+                  {t.lastUpdate}: {formatTime(mainData.dt)}
+                </p>
+              </div>
 
+              <div className="main-right">
+                <img
+                  className="main-icon"
+                  src={`https://openweathermap.org/img/wn/${mainData.weather[0].icon}@4x.png`}
+                  alt="icon"
+                />
+              </div>
+            </section>
+
+            <section className="weather-grid">
+              {otherRegions.map((code) => {
+                const w = dataMap[code];
+                return (
+                  <div className="weather-mini-card" key={code}>
+                    <h3 className="mini-title">
+                      {t.regions[code]}
+                    </h3>
+
+                    {w ? (
+                      <>
+                        <div className="mini-top">
+                          <img
+                            className="mini-icon"
+                            src={`https://openweathermap.org/img/wn/${w.weather[0].icon}@2x.png`}
+                            alt="icon"
+                          />
+                          <span className="mini-temp">
+                            {Math.round(w.main.temp)}°C
+                          </span>
+                        </div>
+
+                        <p className="mini-desc">
+                          {w.weather[0].description}
+                        </p>
+
+                        <div className="mini-details">
+                          <span>
+                            {t.humidity}: {w.main.humidity}%
+                          </span>
+                          <span>
+                            {t.wind}: {w.wind.speed} km/h
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      <p className="mini-loading">
+                        {t.loading}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </section>
+          </>
+        )}
+      </div>
     </div>
   );
 };
