@@ -185,7 +185,7 @@ const Registration = () => {
 
         <button type="submit">{t.button}</button>
 
-        <div className="register-link">
+        <div className="login-link">
           <p>
             {t.haveAccountText} <Link to="/login">{t.loginLink}</Link>
           </p>

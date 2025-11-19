@@ -91,29 +91,26 @@
     display: block;
   }
 
-  .header .navbar .link{
-    display: none;
-    
-  }
-  .header .navbar .link{
+  .header .navbar .link {
     display: flex;
     position: absolute;
     top: 100px;
     right: 0;
     flex-direction: column;
     background-color: rgba(247, 107, 0, 0.93);
-    width: 200px;
+    width: 70%;
     padding: 20px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 2000;
-    transform: translateX(100%); 
-    transition: transform 0.3s ease; 
-    }
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
   .header .navbar.open .link {
     transform: translateX(0);
   }
 
-   .header .navbar .link a {
+  .header .navbar .link a {
     width: 100%;
     text-align: center;
     padding: 15px 0;
@@ -124,10 +121,26 @@
   .header .navbar .link a:last-child {
     border-bottom: none;
   }
+
+
+  html[lang="ar"] .header .navbar .link {
+    right: auto;
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  html[lang="ar"] .header .navbar.open .link {
+    transform: translateX(0);
+  }
+
+  html[lang="ar"] .header .navbar .link a {
+    text-align: center;
+  }
 }
 
+
 .logout-btn {
-  color: #ff4d4d;
+  color: #ffffff;
   margin: 0 15px;
   font-size: 18px;
   cursor: pointer;
@@ -135,5 +148,12 @@
 }
 
 .logout-btn:hover {
-  color: #ff8080;
+  color: #000000;
+}
+
+html[lang="ar"] .header {
+  direction: rtl;
+}
+html[lang="ar"] .navbar .link a {
+  text-align: right;
 }
