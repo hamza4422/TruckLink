@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../styles/NavBar.css';
-import logo from '../assets/trucklink_inverted.png';
-import ReorderIcon from '@mui/icons-material/Reorder';
-import { useLocation } from "react-router-dom";
+// src/components/NavBar.js
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import "../styles/NavBar.css";
+import logo from "../assets/trucklink_inverted.png";
+import ReorderIcon from "@mui/icons-material/Reorder";
+import { LanguageContext } from "./LanguageContext";
+import navbarText from "../translations/navbarText";
 
 const NavBar = () => {
   const [openLinks, setOpenLinks] = useState(false);
   const [isLogged, setIsLogged] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { lang } = useContext(LanguageContext);
+  const t = navbarText[lang];
 
   useEffect(() => {
     const driverData = localStorage.getItem("driverData");
@@ -31,34 +36,50 @@ const NavBar = () => {
   };
 
   return (
-    <header className='header'>
-      <div className='logo'>
-        <Link to="/"><img src={logo} alt="logo"/></Link>
+    <header className="header">
+      <div className="logo">
+        <Link to="/TruckLink" onClick={hideList}>
+          <img src={logo} alt="logo" />
+        </Link>
       </div>
 
       <nav className={`navbar ${openLinks ? "open" : ""}`}>
-        <button onClick={toggleNavbar} className='menuButton'>
-          <ReorderIcon/>
+        <button onClick={toggleNavbar} className="menuButton">
+          <ReorderIcon />
         </button>
 
-        <div className='link'>
-          <Link onClick={hideList} to="/">Home</Link>
-          <Link onClick={hideList} to="/about">About</Link>
-          <Link onClick={hideList} to="/trucks">Trucks</Link>
-
-          
+        <div className="link">
+          <Link onClick={hideList} to="/TruckLink">
+            {t.home}
+          </Link>
+          <Link onClick={hideList} to="/about">
+            {t.about}
+          </Link>
+          <Link onClick={hideList} to="/trucks">
+            {t.trucks}
+          </Link>
+          <Link onClick={hideList} to="/weather">
+            {t.weather}
+          </Link>
           {isLogged ? (
             <>
-              <Link onClick={hideList} to="/dashboard">Dashboard</Link>
-              <span onClick={handleLogout} className="logout-btn">Logout</span>
+              <Link onClick={hideList} to="/dashboard">
+                {t.dashboard}
+              </Link>
+              <span onClick={handleLogout} className="logout-btn">
+                {t.logout}
+              </span>
             </>
           ) : (
             <>
-              <Link onClick={hideList} to="/login">Login</Link>
-              <Link onClick={hideList} to="/registration">Register</Link>
+              <Link onClick={hideList} to="/login">
+                {t.login}
+              </Link>
+              <Link onClick={hideList} to="/registration">
+                {t.register}
+              </Link>
             </>
           )}
-
         </div>
       </nav>
     </header>

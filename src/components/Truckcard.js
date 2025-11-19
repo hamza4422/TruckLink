@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/TruckCard.css";
 import { FaWhatsapp } from "react-icons/fa";
-import defaultImage from "../assets/truck_default.jpg";
+import { LanguageContext } from "../components/LanguageContext";
+import trucksText from "../translations/trucksText";
+
+const API = "http://localhost:5000";
 
 const TruckCard = ({ driver }) => {
-  const { fname, phoneNumber, locations, description, imageUrl } = driver;
+  const { lang } = useContext(LanguageContext);
+  const labels = trucksText[lang].regionsLabels;
 
-  const whatsappLink = `https://wa.me/961${phoneNumber}?text=مرحبا،%20اريد%20الاستفسار%20عبر%20TruckLink`;
+  const { fname, phoneNumber, locations, description } = driver;
+
+  const whatsappLink = `https://wa.me/961${phoneNumber}?text=${
+    lang === "en"
+      ? "Hello, I would like to ask about your truck via TruckLink."
+      : "مرحباً، أود الاستفسار عن شاحنتك عبر TruckLink."
+  }`;
+
+  const getLocationLabel = (code) => labels[code] || code;
 
   return (
     <div className="truck-card">
       <img
         className="truck-image"
-        src={imageUrl && imageUrl !== "" ? imageUrl : defaultImage}
+        src={`${API}/${driver.imageUrl}`}
         alt="truck"
       />
 
@@ -23,7 +35,7 @@ const TruckCard = ({ driver }) => {
       <div className="truck-locations">
         {locations.map((loc, index) => (
           <span key={index} className="location-tag">
-            {loc}
+            {getLocationLabel(loc)}
           </span>
         ))}
       </div>
@@ -32,7 +44,8 @@ const TruckCard = ({ driver }) => {
 
       <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
         <button className="whatsapp-btn">
-          <FaWhatsapp /> تواصل عبر واتساب
+          <FaWhatsapp />{" "}
+          {lang === "en" ? "Contact via WhatsApp" : "تواصل عبر واتساب"}
         </button>
       </a>
     </div>

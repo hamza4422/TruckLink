@@ -79,12 +79,12 @@
 }
 
 .register-link a{
-    color: #fff;
+    color: #0059ff;
     font-weight: 600;
 }
 .register-link a:hover{
     text-decoration: underline;
-    color:#a0e8f0;
+    color:#00e5ff;
 }
 @media screen and (max-width: 480px) {
     .wrapper {

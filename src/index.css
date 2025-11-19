@@ -40,3 +40,13 @@ html, body {
   width: 100%;
   overflow-x: hidden;
 }
+
+html[lang="ar"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[lang="en"] {
+  direction: ltr;
+  text-align: left;
+}

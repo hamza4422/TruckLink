@@ -1,14 +1,35 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../styles/Trucks.css";
-import TruckCard from "../components/Truckcard";
-import driversData from "../data/users.json"; // مؤقتًا
+import TruckCard from "../components/TruckCard";
+import { LanguageContext } from "../components/LanguageContext";
+import trucksText from "../translations/trucksText";
+
+const API = "http://localhost:5000";
 
 const Trucks = () => {
   const [drivers, setDrivers] = useState([]);
   const [filter, setFilter] = useState("all");
 
+  const { lang } = useContext(LanguageContext);
+  const t = trucksText[lang];
+
   useEffect(() => {
-    setDrivers(driversData); // تحميل البيانات
+    fetch(`${API}/drivers`)
+      .then((res) => res.json())
+      .then((data) => {
+        const formatted = data.map((d) => ({
+          ...d,
+          locations:
+            typeof d.locations === "string"
+              ? d.locations.split(",")
+              : Array.isArray(d.locations)
+              ? d.locations
+              : [],
+        }));
+
+        setDrivers(formatted);
+      })
+      .catch((err) => console.error("Error loading drivers:", err));
   }, []);
 
   const filteredDrivers =
@@ -16,10 +37,11 @@ const Trucks = () => {
       ? drivers
       : drivers.filter((d) => d.locations.includes(filter));
 
+  const labels = t.regionsLabels;
+
   return (
     <div className="trucks-page">
-
-      <h1 className="title">ابحث عن شاحنة</h1>
+      <h1 className="title">{t.title}</h1>
 
       <div className="filter-container">
         <select
@@ -27,13 +49,13 @@ const Trucks = () => {
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
         >
-          <option value="all">كل المناطق</option>
-          <option value="beirut">بيروت</option>
-          <option value="mountLebanon">جبل لبنان</option>
-          <option value="north">الشمال</option>
-          <option value="south">الجنوب</option>
-          <option value="bekaa">البقاع</option>
-          <option value="nabatieh">النبطية</option>
+          <option value="all">{t.filterAll}</option>
+          <option value="beirut">{labels.beirut}</option>
+          <option value="mountLebanon">{labels.mountLebanon}</option>
+          <option value="north">{labels.north}</option>
+          <option value="south">{labels.south}</option>
+          <option value="bekaa">{labels.bekaa}</option>
+          <option value="nabatieh">{labels.nabatieh}</option>
         </select>
       </div>
 
@@ -42,7 +64,6 @@ const Trucks = () => {
           <TruckCard key={index} driver={driver} />
         ))}
       </div>
-
     </div>
   );
 };

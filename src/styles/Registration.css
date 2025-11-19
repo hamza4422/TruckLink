@@ -75,11 +75,11 @@
     font-size: 14px;
 }
 
-.register-link a{
-    color: #fff;
+.login-link a{
+    color: #00a2ff;
     font-weight: 600;
 }
-.register-link a:hover{
+.login-link a:hover{
     text-decoration: underline;
     color:#a0e8f0;
 }
