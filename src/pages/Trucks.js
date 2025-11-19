@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../styles/Trucks.css";
-import TruckCard from "../components/TruckCard";
+import TruckCard from "../components/TruckCard"
 import users from "../data/user.json";
 import trucksText from "../translations/trucksText";
 import { LanguageContext } from "../components/LanguageContext";
