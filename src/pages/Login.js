@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 import { FaLock } from "react-icons/fa";
 import { BiSolidLogIn } from "react-icons/bi";
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import DriverDashboard from "./DriverDashboard";
+import { LanguageContext } from "../components/LanguageContext";
+import loginText from "../translations/loginText";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const { lang } = useContext(LanguageContext);
+  const t = loginText[lang];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +28,7 @@ const Login = () => {
       const data = await res.json();
 
       if (data.success) {
-        alert(`Welcome ${data.user.fname}`);
+        alert(t.successWelcome(data.user.fname));
         localStorage.setItem("driverEmail", data.user.email);
         localStorage.setItem("driverData", JSON.stringify(data.user));
         navigate("/dashboard");
@@ -32,19 +37,21 @@ const Login = () => {
       }
     } catch (error) {
       console.error(error);
-      alert("Error connecting to server");
+      alert(t.errorServer);
     }
   };
 
   return (
     <div className="wrapper">
       <form onSubmit={handleSubmit}>
-        <h1>Login <BiSolidLogIn /></h1>
+        <h1>
+          {t.title} <BiSolidLogIn />
+        </h1>
 
         <div className="input-box">
           <input
             type="email"
-            placeholder="Email"
+            placeholder={t.emailPlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -55,7 +62,7 @@ const Login = () => {
         <div className="input-box">
           <input
             type="password"
-            placeholder="Password"
+            placeholder={t.passwordPlaceholder}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -63,12 +70,13 @@ const Login = () => {
           <FaLock className="icon" />
         </div>
 
-        <button type="submit">Login</button>
+        <button type="submit">{t.button}</button>
 
         <div className="register-link">
-          <p>Don't have an account? <Link to="/registration">Register</Link></p>
+          <p>
+            {t.noAccountText} <Link to="/registration">{t.registerLink}</Link>
+          </p>
         </div>
-
       </form>
     </div>
   );

@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "../styles/DriverDashboard.css";
+import { LanguageContext } from "../components/LanguageContext";
+import dashboardText from "../translations/dashboardText";
 
 const API = "http://localhost:5000";
 
 const DriverDashboard = () => {
   const [driver, setDriver] = useState(null);
   const [editMode, setEditMode] = useState(false);
+
+  const { lang } = useContext(LanguageContext);
+  const t = dashboardText[lang];
 
   useEffect(() => {
     const email = localStorage.getItem("driverEmail");
@@ -23,7 +28,7 @@ const DriverDashboard = () => {
       });
   }, []);
 
-  if (!driver) return <h1 className="dash-loading">جاري تحميل البيانات...</h1>;
+  if (!driver) return <h1 className="dash-loading">{t.loading}</h1>;
 
   const handleUpload = async (e) => {
     const file = e.target.files[0];
@@ -57,16 +62,17 @@ const DriverDashboard = () => {
     const data = await res.json();
 
     if (data.status === "success") {
-      alert("تم حفظ التعديلات");
+      alert(t.saveSuccess);
       setEditMode(false);
       localStorage.setItem("driverData", JSON.stringify(driver));
+    } else {
+      alert(t.saveError);
     }
   };
 
   return (
     <div className="dash-wrapper">
       <div className="dash-card">
-
         <div className="dash-image-container">
           <img
             src={`${API}/${driver.imageUrl}`}
@@ -75,36 +81,35 @@ const DriverDashboard = () => {
           />
 
           <label className="dash-upload-btn">
-            تغيير الصورة
+            {t.changeImage}
             <input type="file" accept="image/*" onChange={handleUpload} />
           </label>
         </div>
 
         {!editMode ? (
           <div className="dash-info">
-
             <div className="dash-row">
-              <span>الاسم:</span>
+              <span>{t.name}:</span>
               <b>{driver.fname}</b>
             </div>
 
             <div className="dash-row">
-              <span>الإيميل:</span>
+              <span>{t.email}:</span>
               <b>{driver.email}</b>
             </div>
 
             <div className="dash-row">
-              <span>الهاتف:</span>
+              <span>{t.phone}:</span>
               <b>{driver.phoneNumber}</b>
             </div>
 
             <div className="dash-row">
-              <span>المناطق:</span>
+              <span>{t.regions}:</span>
               <b>{driver.locations.join(", ")}</b>
             </div>
 
             <div className="dash-desc-box">
-              <span>الوصف:</span>
+              <span>{t.description}:</span>
               <p>{driver.description}</p>
             </div>
 
@@ -112,20 +117,18 @@ const DriverDashboard = () => {
               className="dash-edit-btn"
               onClick={() => setEditMode(true)}
             >
-              تعديل البيانات
+              {t.editButton}
             </button>
-
           </div>
         ) : (
           <div className="dash-edit">
-
             <input
               type="text"
               value={driver.fname}
               onChange={(e) =>
                 setDriver({ ...driver, fname: e.target.value })
               }
-              placeholder="الاسم"
+              placeholder={t.name}
             />
 
             <input
@@ -134,7 +137,7 @@ const DriverDashboard = () => {
               onChange={(e) =>
                 setDriver({ ...driver, phoneNumber: e.target.value })
               }
-              placeholder="الهاتف"
+              placeholder={t.phone}
             />
 
             <textarea
@@ -142,15 +145,14 @@ const DriverDashboard = () => {
               onChange={(e) =>
                 setDriver({ ...driver, description: e.target.value })
               }
-              placeholder="الوصف"
+              placeholder={t.description}
             />
 
             <button className="dash-save-btn" onClick={handleSave}>
-              حفظ التعديلات
+              {t.saveButton}
             </button>
           </div>
         )}
-
       </div>
     </div>
   );
