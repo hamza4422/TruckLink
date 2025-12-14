@@ -9,6 +9,9 @@ import Registration from "./pages/Registration";
 import DriverDashboard from "./pages/DriverDashboard";
 import Footer from "./components/Footer";
 import Weather from "./pages/Weather";
+import CreateOrder from "./pages/CreateOrder";
+import PendingOrders from "./pages/PendingOrders";
+import ReadyOrders from "./pages/ReadyOrders";
 function App() {
   return (
     <div className="App">
@@ -22,6 +25,9 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/dashboard" element={<DriverDashboard />} />
           <Route path="/weather" element={<Weather />} />
+          <Route path="/create-order/:driverId" element={<CreateOrder />} />
+          <Route path="/pending-orders" element={<PendingOrders />} />
+          <Route path="/ready-orders" element={<ReadyOrders />} />
         </Routes>
         <Footer />
       </BrowserRouter>

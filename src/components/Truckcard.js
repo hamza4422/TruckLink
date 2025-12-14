@@ -3,7 +3,7 @@ import "../styles/TruckCard.css";
 import { FaWhatsapp } from "react-icons/fa";
 import { LanguageContext } from "../components/LanguageContext";
 import trucksText from "../translations/trucksText";
-
+import { Link } from "react-router-dom";
 const API = "http://localhost:5000";
 
 const TruckCard = ({ driver }) => {
@@ -11,12 +11,6 @@ const TruckCard = ({ driver }) => {
   const labels = trucksText[lang].regionsLabels;
 
   const { fname, phoneNumber, locations, description } = driver;
-
-  const whatsappLink = `https://wa.me/961${phoneNumber}?text=${
-    lang === "en"
-      ? "Hello, I would like to ask about your truck via TruckLink."
-      : "مرحباً، أود الاستفسار عن شاحنتك عبر TruckLink."
-  }`;
 
   const getLocationLabel = (code) => labels[code] || code;
 
@@ -31,6 +25,8 @@ const TruckCard = ({ driver }) => {
       <h2 className="truck-name">{fname}</h2>
 
       <p className="truck-phone">📞 {phoneNumber}</p>
+      
+      <p className="truck-price"> <b>{driver.payPerDay} $</b> </p>
 
       <div className="truck-locations">
         {locations.map((loc, index) => (
@@ -42,12 +38,12 @@ const TruckCard = ({ driver }) => {
 
       <p className="truck-desc">{description}</p>
 
-      <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-        <button className="whatsapp-btn">
-          <FaWhatsapp />{" "}
-          {lang === "en" ? "Contact via WhatsApp" : "تواصل عبر واتساب"}
+      <Link to={`/create-order/${driver.id}`}>
+        <button className="order-btn">
+         {trucksText[lang].regionsLabels.button}
         </button>
-      </a>
+      </Link>
+
     </div>
   );
 };

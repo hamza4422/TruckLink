@@ -9,6 +9,7 @@ const trucksText = {
       south: "South",
       bekaa: "Bekaa",
       nabatieh: "Nabatieh",
+      button: "Create Order",
     },
   },
 
@@ -22,6 +23,7 @@ const trucksText = {
       south: "الجنوب",
       bekaa: "البقاع",
       nabatieh: "النبطية",
+      button: "إنشاء طلب",
     },
   },
 };

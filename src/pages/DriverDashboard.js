@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from "react";
 import "../styles/DriverDashboard.css";
 import { LanguageContext } from "../components/LanguageContext";
 import dashboardText from "../translations/dashboardText";
-
+import trucksText from "../translations/trucksText";
+import { Link } from "react-router-dom";
 const API = "http://localhost:5000";
 
 const DriverDashboard = () => {
@@ -11,7 +12,6 @@ const DriverDashboard = () => {
 
   const { lang } = useContext(LanguageContext);
   const t = dashboardText[lang];
-
   useEffect(() => {
     const email = localStorage.getItem("driverEmail");
     if (!email) return;
@@ -74,6 +74,21 @@ const DriverDashboard = () => {
     <div className="dash-wrapper">
       <div className="dash-card">
         <div className="dash-image-container">
+          <div className="orders-section">
+            <h3>
+              {lang === "ar" ? "إدارة الطلبات" : "Orders Management"}
+            </h3>
+
+            <div className="orders-links">
+              <Link to="/pending-orders" className="orders-link pending">
+                📥 {lang === "ar" ? "الطلبات المعلّقة" : "Pending Orders"}
+              </Link>
+
+              <Link to="/ready-orders" className="orders-link ready">
+                ✅ {lang === "ar" ? "الطلبات الجاهزة" : "Ready Orders"}
+              </Link>
+            </div>
+          </div>
           <img
             src={`${API}/${driver.imageUrl}`}
             alt="truck"
@@ -101,6 +116,11 @@ const DriverDashboard = () => {
             <div className="dash-row">
               <span>{t.phone}:</span>
               <b>{driver.phoneNumber}</b>
+            </div>
+            
+            <div className="dash-row">
+              <span>{t.payPerDay}</span>
+              <b>{driver.payPerDay} $</b>
             </div>
 
             <div className="dash-row">
@@ -139,6 +159,43 @@ const DriverDashboard = () => {
               }
               placeholder={t.phone}
             />
+            <input
+              type="number"
+              value={driver.payPerDay}
+              onChange={(e) =>
+                setDriver({ ...driver, payPerDay: e.target.value })
+              }
+              placeholder={t.payPerDay}
+            />
+              <div className="dash-locations-edit">
+                <p>{t.regions}</p>
+
+                <div className="dash-locations-grid">
+                  {Object.keys(t.regionsList).map((region) => (
+                    <label key={region} className="dash-location-item">
+                      <input
+                        type="checkbox"
+                        checked={driver.locations.includes(region)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setDriver({
+                              ...driver,
+                              locations: [...driver.locations, region],
+                            });
+                          } else {
+                            setDriver({
+                              ...driver,
+                              locations: driver.locations.filter((r) => r !== region),
+                            });
+                          }
+                        }}
+                      />
+                      <span>{t.regionsList[region]}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
 
             <textarea
               value={driver.description}
@@ -153,7 +210,10 @@ const DriverDashboard = () => {
             </button>
           </div>
         )}
+        
       </div>
+
+    
     </div>
   );
 };

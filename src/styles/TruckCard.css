@@ -66,7 +66,7 @@
   line-height: 1.6;
 }
 
-.whatsapp-btn {
+.order-btn {
   width: calc(100% - 36px);
   margin: 15px auto 20px;
   padding: 12px;
@@ -84,6 +84,6 @@
   transition: 0.25s;
 }
 
-.whatsapp-btn:hover {
+.order-btn:hover {
   background: #1ebe5a;
 }
