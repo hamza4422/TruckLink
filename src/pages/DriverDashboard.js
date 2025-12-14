@@ -89,6 +89,8 @@ const DriverDashboard = () => {
               </Link>
             </div>
           </div>
+          <br />
+          <br />
           <img
             src={`${API}/${driver.imageUrl}`}
             alt="truck"
