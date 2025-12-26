@@ -1,4 +1,3 @@
-// src/pages/Weather.js
 import React, { useState, useEffect, useContext } from "react";
 import "../styles/Weather.css";
 import { LanguageContext } from "../components/LanguageContext";
@@ -21,6 +20,7 @@ const Weather = () => {
   ];
 
   const [dataMap, setDataMap] = useState({});
+  const [forecast, setForecast] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -45,10 +45,7 @@ const Weather = () => {
             )},LB&appid=${API_KEY}&units=metric&lang=${lang}`,
             { signal: controller.signal }
           ).then((res) =>
-            res.json().then((json) => ({
-              code,
-              json,
-            }))
+            res.json().then((json) => ({ code, json }))
           );
         });
 
@@ -69,22 +66,34 @@ const Weather = () => {
         } else {
           setDataMap(map);
         }
-      } catch (err) {
-        if (err.name !== "AbortError") {
-          setError(t.error);
+
+        const forecastRes = await fetch(
+          `https://api.openweathermap.org/data/2.5/forecast?q=Lebanon,LB&appid=${API_KEY}&units=metric&lang=${lang}`,
+          { signal: controller.signal }
+        );
+
+        const forecastJson = await forecastRes.json();
+
+        if (forecastJson.cod === "200") {
+          const daily = {};
+          forecastJson.list.forEach((item) => {
+            const date = item.dt_txt.split(" ")[0];
+            if (!daily[date]) daily[date] = item;
+          });
+          setForecast(Object.values(daily).slice(0, 5));
         }
+      } catch (err) {
+        if (err.name !== "AbortError") setError(t.error);
       } finally {
         setLoading(false);
       }
     };
 
     fetchAll();
-
     return () => controller.abort();
   }, [lang, t]);
 
   const mainData = dataMap["lebanon"] || dataMap["beirut"];
-
   const otherRegions = regionKeys.filter((k) => k !== "lebanon");
 
   const formatTime = (dt) => {
@@ -97,10 +106,7 @@ const Weather = () => {
   };
 
   return (
-    <div
-      className="weather-page"
-      dir={lang === "ar" ? "rtl" : "ltr"}
-    >
+    <div className="weather-page" dir={lang === "ar" ? "rtl" : "ltr"}>
       <div className="weather-overlay" />
 
       <div className="weather-content">
@@ -109,22 +115,16 @@ const Weather = () => {
           <p className="weather-sub">{t.subtitle}</p>
         </header>
 
-        {loading && (
-          <p className="weather-loading">{t.loading}</p>
-        )}
-
-        {error && !loading && (
-          <p className="weather-error">{error}</p>
-        )}
+        {loading && <p className="weather-loading">{t.loading}</p>}
+        {error && !loading && <p className="weather-error">{error}</p>}
 
         {!loading && !error && mainData && (
           <>
             <section className="weather-main-card">
               <div className="main-left">
                 <h2 className="main-title">{t.mainBoxTitle}</h2>
-                <p className="main-region">
-                  {t.regions["lebanon"]}
-                </p>
+                <p className="main-region">{t.regions["lebanon"]}</p>
+
                 <div className="main-temp-row">
                   <span className="main-temp">
                     {Math.round(mainData.main.temp)}°C
@@ -135,16 +135,9 @@ const Weather = () => {
                 </div>
 
                 <div className="main-details">
-                  <span>
-                    {t.feels}:{" "}
-                    {Math.round(mainData.main.feels_like)}°C
-                  </span>
-                  <span>
-                    {t.humidity}: {mainData.main.humidity}%
-                  </span>
-                  <span>
-                    {t.wind}: {mainData.wind.speed} km/h
-                  </span>
+                  <span>{t.feels}: {Math.round(mainData.main.feels_like)}°C</span>
+                  <span>{t.humidity}: {mainData.main.humidity}%</span>
+                  <span>{t.wind}: {mainData.wind.speed} km/h</span>
                 </div>
 
                 <p className="main-update">
@@ -161,14 +154,43 @@ const Weather = () => {
               </div>
             </section>
 
+            
+            <section className="forecast-section">
+              <h2 className="forecast-title">
+                {lang === "ar"
+                  ? "توقعات الطقس في لبنان لخمسة أيام"
+                  : "Lebanon 5-Day Forecast"}
+              </h2>
+
+              <div className="forecast-grid">
+                {forecast.map((day, i) => (
+                  <div className="forecast-card" key={i}>
+                    <h4>
+                      {new Date(day.dt * 1000).toLocaleDateString(
+                        lang === "ar" ? "ar-LB" : "en-LB",
+                        { weekday: "long", day: "numeric", month: "short" }
+                      )}
+                    </h4>
+
+                    <img
+                      src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+                      alt="icon"
+                    />
+
+                    <p>{day.weather[0].description}</p>
+                    <span>{Math.round(day.main.temp)}°C</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            
             <section className="weather-grid">
               {otherRegions.map((code) => {
                 const w = dataMap[code];
                 return (
                   <div className="weather-mini-card" key={code}>
-                    <h3 className="mini-title">
-                      {t.regions[code]}
-                    </h3>
+                    <h3 className="mini-title">{t.regions[code]}</h3>
 
                     {w ? (
                       <>
@@ -183,23 +205,14 @@ const Weather = () => {
                           </span>
                         </div>
 
-                        <p className="mini-desc">
-                          {w.weather[0].description}
-                        </p>
-
+                        <p className="mini-desc">{w.weather[0].description}</p>
                         <div className="mini-details">
-                          <span>
-                            {t.humidity}: {w.main.humidity}%
-                          </span>
-                          <span>
-                            {t.wind}: {w.wind.speed} km/h
-                          </span>
+                          <span>{t.humidity}: {w.main.humidity}%</span>
+                          <span>{t.wind}: {w.wind.speed} km/h</span>
                         </div>
                       </>
                     ) : (
-                      <p className="mini-loading">
-                        {t.loading}
-                      </p>
+                      <p className="mini-loading">{t.loading}</p>
                     )}
                   </div>
                 );

@@ -57,7 +57,7 @@
   color: #ffb3b3;
 }
 
-/* الكرت الرئيسي للبنان */
+
 .weather-main-card {
   display: flex;
   justify-content: space-between;
@@ -142,7 +142,6 @@
   animation: float 3s infinite ease-in-out;
 }
 
-/* كروت المناطق */
 .weather-grid {
   margin-top: 30px;
   display: grid;
@@ -208,6 +207,34 @@
   opacity: 0.9;
 }
 
+.forecast-section {
+  margin-top: 60px;
+}
+
+.forecast-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.forecast-card {
+  background: rgba(0, 0, 0, 0.877);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(59, 53, 53, 0.15);
+}
+
+.forecast-card img {
+  width: 70px;
+}
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(35px); }
   to { opacity: 1; transform: translateY(0); }
@@ -263,3 +290,4 @@ html[lang="ar"] .weather-main-card .main-details {
     font-size: 34px;
   }
 }
+

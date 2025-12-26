@@ -84,10 +84,9 @@
     color:#a0e8f0;
 }
 
-/* --- Media Queries للأجهزة الصغيرة --- */
 @media screen and (max-width: 480px) {
     .wrapper {
-        padding: 30px 20px; /* تقليل الحشو */
+        padding: 30px 20px;
         margin: 50px auto;
         border-radius: 15px;
         backdrop-filter: blur(30px);
